@@ -5,67 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>เช็คอิน</title>
 <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-    * { margin:0; padding:0; box-sizing:border-box; font-family:'Prompt',sans-serif; }
-    body { background:#f0f4f8; color:#1a2b4a; padding-bottom:80px; }
-    .header { background:linear-gradient(135deg,#1e5799,#2989d8); color:#fff; padding:20px 16px; text-align:center; border-radius:0 0 20px 20px; }
-    .header h1 { font-size:1.3rem; }
-    .header p { font-size:0.85rem; opacity:0.9; margin-top:4px; }
-    .container { max-width:480px; margin:0 auto; padding:16px; }
-    .card { background:#fff; border-radius:16px; padding:16px; margin-bottom:12px; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
-    .card h2 { font-size:1.05rem; margin-bottom:8px; color:#1e5799; }
-    .btn { display:block; width:100%; padding:14px; border:none; border-radius:12px; font-size:1rem; font-weight:600; cursor:pointer; text-align:center; text-decoration:none; background:#2989d8; color:#fff; margin-top:8px; }
-    .btn.green { background:#27ae60; } .btn.orange { background:#f39c12; }
-    .btn.gray { background:#95a5a6; } .btn.red { background:#e74c3c; }
-    select, input { width:100%; padding:12px; border-radius:10px; border:2px solid #e9ecef; font-size:1rem; }
-    .stat-row { display:flex; gap:10px; margin-top:12px; }
-    .stat-box { flex:1; text-align:center; padding:12px; border-radius:10px; }
-    .stat-box .num { font-size:1.5rem; font-weight:700; }
-    .stat-box .label { font-size:0.75rem; }
-    .badge-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
-    .badge-item { text-align:center; padding:12px 6px; border-radius:12px; background:#f8f9fa; border:2px solid #e9ecef; }
-    .badge-item.earned { background:#fff8e1; border-color:#ffc107; }
-    .badge-item.locked { opacity:0.4; filter:grayscale(1); }
-    .badge-item .icon { font-size:2rem; }
-    .badge-item .name { font-size:0.7rem; margin-top:4px; font-weight:600; }
-    .lb-row { display:flex; align-items:center; padding:10px 12px; border-radius:10px; margin-bottom:6px; background:#fff; box-shadow:0 1px 4px rgba(0,0,0,0.05); }
-    .lb-row.top1 { background:linear-gradient(90deg,#fff8e1,#fff); border-left:4px solid #ffc107; }
-    .lb-row.top2 { background:linear-gradient(90deg,#f5f5f5,#fff); border-left:4px solid #9e9e9e; }
-    .lb-row.top3 { background:linear-gradient(90deg,#fff3e0,#fff); border-left:4px solid #cd7f32; }
-    .lb-row.me { border:2px solid #2989d8; }
-    .lb-rank { font-size:1.1rem; font-weight:700; width:36px; }
-    .lb-name { flex:1; font-size:0.9rem; }
-    .lb-points { font-weight:700; color:#2989d8; }
-    .quiz-q { margin-bottom:12px; }
-    .quiz-q .q-text { font-weight:600; margin-bottom:10px; }
-    .quiz-choice { display:block; padding:12px; margin-bottom:8px; border:2px solid #e9ecef; border-radius:10px; cursor:pointer; background:#fff; font-size:0.9rem; }
-    .quiz-choice.selected { border-color:#2989d8; background:#e3f2fd; }
-    .result-box { text-align:center; padding:30px 20px; }
-    .result-box .big { font-size:3rem; }
-    .result-box .score { font-size:2rem; font-weight:700; color:#2989d8; margin:10px 0; }
-    .nav { position:fixed; bottom:0; left:0; right:0; background:#fff; display:flex; box-shadow:0 -2px 10px rgba(0,0,0,0.08); max-width:480px; margin:0 auto; }
-    .nav a { flex:1; text-align:center; padding:10px 4px; text-decoration:none; color:#95a5a6; font-size:0.62rem; }
-    .nav a.active { color:#2989d8; }
-    .nav a .ic { font-size:1.3rem; display:block; }
-    .loading { text-align:center; padding:40px; color:#95a5a6; }
-    .checkin-item { display:flex; align-items:center; padding:12px; border-radius:10px; margin-bottom:8px; background:#fff; border:2px solid #e9ecef; }
-    .checkin-item.done { border-color:#27ae60; background:#e8f5e9; }
-    .checkin-item .ci-icon { font-size:1.5rem; margin-right:12px; }
-    .checkin-item .ci-name { flex:1; font-size:0.85rem; }
-    .checkin-item .ci-status { font-size:1.2rem; }
-    .chat-area { height:400px; overflow-y:auto; padding:8px; background:#f8f9fa; border-radius:12px; margin-bottom:10px; }
-    .chat-msg { margin-bottom:10px; display:flex; }
-    .chat-msg.user { justify-content:flex-end; }
-    .chat-bubble { max-width:80%; padding:10px 14px; border-radius:14px; font-size:0.9rem; line-height:1.4; }
-    .chat-msg.user .chat-bubble { background:#2989d8; color:#fff; border-bottom-right-radius:4px; }
-    .chat-msg.bot .chat-bubble { background:#fff; border:1px solid #e9ecef; border-bottom-left-radius:4px; }
-    .chat-input-row { display:flex; gap:8px; }
-    .chat-input-row input { flex:1; }
-    .chat-input-row button { width:auto; padding:12px 20px; margin:0; }
-</style>
+<link rel="stylesheet" href="style.css?v=6">
 </head>
 <body>
-
 <div class="header"><h1>📍 เช็คอินภารกิจ</h1><p id="ciCount">-</p></div>
 <div class="container">
   <div class="card">
@@ -76,100 +18,43 @@
     <div id="ciMsg" style="margin-top:10px;text-align:center;font-size:0.9rem;"></div>
   </div>
   <div class="card"><h2>ภารกิจ SMART Model</h2><div id="smartList"></div></div>
-  <div class="card"><h2>ภารกิจบทเรียน</h2><div id="lessonList"></div></div>
+  <div class="card"><h2>ภารกิจบทเรียน</h2><div id="lsList"></div></div>
 </div>
-
+<script src="config.js?v=6"></script>
+<script src="app.js?v=6"></script>
 <script>
-
-  var API_URL = 'https://script.google.com/macros/s/AKfycbxwL_YZTcf9Z9arWhmHOJqyWuaBn9P6ElqFUQJvlhAyFaCqBqVkP53_WoRyTnTa7KYy/exec';
-
-  function callAPI(action, params, onDone) {
-    var url = API_URL + '?action=' + encodeURIComponent(action);
-    if (params) { for (var k in params) { url += '&' + encodeURIComponent(k) + '=' + encodeURIComponent(params[k]); } }
-    var cb = '_cb_' + Math.random().toString(36).substr(2, 9);
-    url += '&callback=' + cb;
-    var timer = setTimeout(function() { window[cb] = function(){}; onDone({ error: 'หมดเวลาเชื่อมต่อ' }); }, 15000);
-    window[cb] = function(data) { clearTimeout(timer); try { delete window[cb]; } catch(e){} onDone(data); };
-    var s = document.createElement('script');
-    s.src = url;
-    s.onerror = function() { clearTimeout(timer); onDone({ error: 'เชื่อมต่อไม่สำเร็จ' }); };
-    document.head.appendChild(s);
+var SID = '';
+window.addEventListener('DOMContentLoaded', function() {
+  SID = getSid();
+  if (!SID) { document.querySelector('.container').innerHTML='<div class="card" style="text-align:center;"><p>กรุณาเข้าสู่ระบบก่อน</p><a class="btn" href="index.html">กลับหน้าแรก</a></div>'; return; }
+  buildNav('checkin', SID);
+  loadCheckins();
+});
+function loadCheckins() { callAPI('getCheckins', { sid: SID }, render); }
+function render(missions) {
+  if (missions.error) return;
+  var smart = document.getElementById('smartList');
+  var lesson = document.getElementById('lsList');
+  smart.innerHTML=''; lesson.innerHTML='';
+  var done = 0;
+  for (var i=0;i<missions.length;i++) {
+    var m = missions[i];
+    if (m.checked) done++;
+    var html = '<div class="checkin-item '+(m.checked?'done':'')+'"><div class="ci-icon">'+(m.mission_type==='smart'?'🎯':'📖')+'</div><div class="ci-name">'+m.mission_name+'</div><div class="ci-status">'+(m.checked?'✅':'⬜')+'</div></div>';
+    if (m.mission_type === 'smart') smart.innerHTML += html; else lesson.innerHTML += html;
   }
-
-  function getSid() {
-    try {
-      var u = new URLSearchParams(window.location.search).get('sid');
-      if (u) { localStorage.setItem('smart_sid', u); return u; }
-      return localStorage.getItem('smart_sid') || '';
-    } catch(e) { return ''; }
-  }
-
-  function logout() {
-    try { localStorage.removeItem('smart_sid'); } catch(e) {}
-    window.location.href = 'index.html';
-  }
-
-  function buildNav(active, sid) {
-    var q = sid ? ('?sid=' + encodeURIComponent(sid)) : '';
-    var items = [
-      ['home','🏠','หน้าแรก','index.html'],
-      ['lessons','📚','บทเรียน','lessons.html'],
-      ['chatbot','🤖','AI','chatbot.html'],
-      ['badges','🎖️','Badge','badges.html'],
-      ['leaderboard','🏆','อันดับ','leaderboard.html'],
-      ['checkin','📍','เช็คอิน','checkin.html']
-    ];
-    var html = '';
-    for (var i=0;i<items.length;i++) {
-      var it = items[i];
-      var cls = (it[0]===active) ? 'active' : '';
-      html += '<a href="'+it[3]+q+'" class="'+cls+'"><span class="ic">'+it[1]+'</span>'+it[2]+'</a>';
-    }
-    var nav = document.createElement('div');
-    nav.className = 'nav';
-    nav.innerHTML = html;
-    document.body.appendChild(nav);
-  }
-
-
-  var SID = '';
-  window.addEventListener('DOMContentLoaded', function() {
-    SID = getSid();
-    if (!SID) { document.querySelector('.container').innerHTML = '<div class="card" style="text-align:center;"><p>กรุณาเข้าสู่ระบบก่อน</p><a class="btn" href="index.html">กลับหน้าแรก</a></div>'; return; }
-    buildNav('checkin', SID);
-    loadCheckins();
+  document.getElementById('ciCount').textContent = 'เช็คอินแล้ว ' + done + ' จาก ' + missions.length + ' ภารกิจ';
+}
+function doCheckin() {
+  var code = document.getElementById('missionCode').value.trim().toUpperCase();
+  if (!code) { alert('กรุณากรอกรหัสภารกิจ'); return; }
+  var msg = document.getElementById('ciMsg');
+  msg.textContent = '⏳ กำลังเช็คอิน...';
+  callAPI('checkin', { sid: SID, missionCode: code }, function(r) {
+    if (r.error) { msg.innerHTML='<span style="color:#e74c3c;">❌ '+r.error+'</span>'; }
+    else { msg.innerHTML='<span style="color:#27ae60;">🎉 เช็คอิน "'+r.mission+'" สำเร็จ! +'+r.points+' คะแนน</span>'; document.getElementById('missionCode').value=''; loadCheckins(); }
   });
-
-  function loadCheckins() {
-    callAPI('getCheckins', { sid: SID }, render);
-  }
-
-  function render(missions) {
-    if (missions.error) return;
-    var smart = document.getElementById('smartList');
-    var lesson = document.getElementById('lessonList');
-    smart.innerHTML = ''; lesson.innerHTML = '';
-    var done = 0;
-    for (var i=0;i<missions.length;i++) {
-      var m = missions[i];
-      if (m.checked) done++;
-      var html = '<div class="checkin-item '+(m.checked?'done':'')+'"><div class="ci-icon">'+(m.mission_type==='smart'?'🎯':'📖')+'</div><div class="ci-name">'+m.mission_name+'</div><div class="ci-status">'+(m.checked?'✅':'⬜')+'</div></div>';
-      if (m.mission_type === 'smart') smart.innerHTML += html; else lesson.innerHTML += html;
-    }
-    document.getElementById('ciCount').textContent = 'เช็คอินแล้ว ' + done + ' จาก ' + missions.length + ' ภารกิจ';
-  }
-
-  function doCheckin() {
-    var code = document.getElementById('missionCode').value.trim().toUpperCase();
-    if (!code) { alert('กรุณากรอกรหัสภารกิจ'); return; }
-    var msg = document.getElementById('ciMsg');
-    msg.textContent = '⏳ กำลังเช็คอิน...';
-    callAPI('checkin', { sid: SID, missionCode: code }, function(r) {
-      if (r.error) { msg.innerHTML = '<span style="color:#e74c3c;">❌ '+r.error+'</span>'; }
-      else { msg.innerHTML = '<span style="color:#27ae60;">🎉 เช็คอิน "'+r.mission+'" สำเร็จ! +'+r.points+' คะแนน</span>'; document.getElementById('missionCode').value=''; loadCheckins(); }
-    });
-  }
-
+}
 </script>
 </body>
 </html>
